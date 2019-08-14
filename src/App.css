@@ -31,3 +31,30 @@
     transform: rotate(360deg);
   }
 }
+
+/* my css code*/
+
+.form{
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+   margin: 0 auto;
+}
+form .submitButton{
+  border: 1px solid black;
+  width: 50px;
+  margin: 0 auto;
+
+}
+
+
+
+
+
+
+
+
+
+
+

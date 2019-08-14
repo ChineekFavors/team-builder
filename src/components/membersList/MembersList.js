@@ -1,15 +1,21 @@
 import React from 'react';
-function MembersList(){
+
+
+function MembersList(props){
 
 	return(
+		
 		<div className='membersList'>
 			<h3>Team Members</h3>
-			<div className='list'>
-				<p>name:</p>
-				<p>email:</p>
-				<p>role:</p>
-			</div>
-
+			{props.membersList.map( (member) =>{
+				return (
+					<div className='list' key={member.name}>
+						<p>name: {member.name}</p>
+						<p>email: {member.email}</p>
+						<p>role: {member.role}</p>
+					</div>	
+				)
+			})}
 		</div>
 	)
 

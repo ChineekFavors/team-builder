@@ -10,12 +10,16 @@ import MembersList from './components/membersList/MembersList.js'
 
 function App() {
   const [list, setList] = useState(data);
-  console.log(list);
+
+  const newMember = member => {
+    setList([...list, member]);
+  }
+ 
   return (
     <div className="App">
     <Heading />
-    <Form />
-    <MembersList />
+    <Form newMember={newMember}/>
+    <MembersList membersList={list} />
      
     </div>
   );

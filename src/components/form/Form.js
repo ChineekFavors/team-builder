@@ -1,27 +1,63 @@
-import React from 'react';
-function Form(){
+import React, {useState} from 'react';
+
+
+function Form(props){
+	
+	const [newMember, setNewMember]= useState({
+		name: '',
+		email: '',
+		role: ''
+	});
+	
+	const changeHandler = event => {
+		setNewMember({...newMember, [event.target.name]: event.target.value});
+	}
+
+	const submitForm = event => {
+		event.preventDefault();
+		const member = {...newMember};
+		props.newMember(member);
+
+	}
 
 	return (
 		<div className='divForm'>
 			<h2>Please fill out form</h2>
-		<form className='form'>
-			<label className='name'> 
-				name:
-				<input type="text" placeholder='enter first name' />
-			</label>
 
-			<label className='email'>
-				email:
-				<input type="text" placeholder='enter email address'/>
-			</label>
+			<form className='form' onSubmit={submitForm} >
 
-			<label className='role'>
-				role:
-				<input type="text" placeholder='enter your role' />
-			</label>
-			<button className="submitButton">submit</button>
-			
-		</form>
+				<label htmlFor='name' className='name'>
+					name:
+					<input type="text" 
+						name='name' 
+						placeholder='enter first name' 
+						value={newMember.name} 
+						onChange= {changeHandler} 
+						
+					/>
+				</label>
+
+				<label htmlFor='email' className='email'>
+					email:
+					<input type="text"  
+						name='email' 
+						placeholder='enter email address'
+						onChange= {changeHandler} 
+						value={newMember.email}
+					/>
+				</label>
+
+				<label htmlFor='role' className='role'>
+					role:
+					<input type="text" 
+						name='role' 
+						placeholder='enter your role' 
+						onChange= {changeHandler} 
+						value={newMember.role}
+					/>
+				</label>
+				<button type='submit' className="submitButton">add member</button>	
+			</form>
 		</div>
 	)
 
